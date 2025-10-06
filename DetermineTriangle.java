@@ -82,3 +82,54 @@ public class DetermineTriangle {
         return diff <= 0.01 * avg; // toleransi 1%
     }
 }
+
+//Punyanya Nada Nabilah - 103012300202
+public class SegitigaNada {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Masukkan nilai a: ");
+        double a = input.nextDouble();
+        System.out.println("Masukkan nilai b: ");
+        double b = input.nextDouble();
+        System.out.println("Masukkan nilai c: ");
+        double c = input.nextDouble();
+        
+        segitiga(a, b, c);
+        input.close();
+    }
+
+    // Fungsi untuk mengecek apakah dua sisi dianggap sama (toleransi 1%)
+    static boolean sama(double x, double y) {
+        return Math.abs(x - y) <= 0.01 * Math.max(x, y);
+    }
+    
+    static void segitiga(double a,double b,double c) {
+        //Mnegurutkan sisi dari terkecil ke terbesar
+        double[] sisi = {a, b, c};
+        java.util.Arrays.sort(sisi);
+        a = sisi[0];
+        b = sisi[1];
+        c = sisi[2];
+        
+        //1. Validasi Awal
+        if (a <= 0 || b <= 0 || c <=0){
+            System.out.println("Tidak ada segitiga yang dapat dibangun.");
+            return;
+        }
+        if (c >= a+b){
+            System.out.println("Tidak ada segitiga yang dibangun karena sisi terbesar >= penjumlahan kedua sisi");
+            return;
+        }
+        
+        //2. Klasifikasi Segitiga
+        if (sama(a,b) && sama(b,c)){
+            System.out.println("Segitiga Sama Sisi (Equilateral)");
+        }else if (sama(a,b) || sama(b,c) || sama(a,c)){
+            System.out.println("Segitiga Sama Kaki (Isosceles)");
+        }else if (Math.abs(c * c - (a * a + b * b)) <= 0.01 * (c * c)){
+            System.out.println("Segitiga Siku-Siku (Right Triangle)");
+        }else{
+            System.out.println("Segitiga bebas (Scalene)");
+        }
+    }
+}
