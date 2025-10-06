@@ -1,8 +1,7 @@
 
-// #coder: adamleon
-
 import java.util.*;
 
+// #Coder : Adam Leonard C Munthe
 public class DetermineTriangle {
 
     public static void main(String[] args) {
