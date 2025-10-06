@@ -191,3 +191,55 @@ public class DetermineTriangle_NovelShiffa {
         segitiga(a, b, c);
     }
 }
+
+// property of Fathir Ahmad Lidzikri - 103012300259
+public class JenisSegitiga_Fathir {
+
+    // Fungsi pembanding
+    public static boolean hampirSama(double x, double y) {
+        return Math.abs(x - y) <= 0.01 * Math.max(x, y);
+    }
+
+    // Fungsi untuk menentukan jenis segitiga
+    public static String jenisSegitiga(double a, double b, double c) {
+        double x = a, y = b, z = c;
+
+        // Tentukan sisi terbesar secara manual
+        double max = x;
+        if (y > max) max = y;
+        if (z > max) max = z;
+
+        // Tentukan dua sisi lainnya
+        double s1 = 0, s2 = 0;
+        if (max == x) { s1 = y; s2 = z; }
+        else if (max == y) { s1 = x; s2 = z; }
+        else { s1 = x; s2 = y; }
+
+        // Validasi awal
+        if ((x <= 0 || y <= 0 || z <= 0) || (max >= s1 + s2))
+            return "Tidak dapat membentuk segitiga";
+
+        // Klasifikasi
+        if (hampirSama(a, b) && hampirSama(b, c))
+            return "Segitiga Sama Sisi";
+        else if (hampirSama(a, b) || hampirSama(b, c) || hampirSama(a, c)) {
+            if (hampirSama(max * max, s1 * s1 + s2 * s2))
+                return "Segitiga Sama Kaki dan Siku-Siku";
+            return "Segitiga Sama Kaki";
+        }
+        else if (hampirSama(max * max, s1 * s1 + s2 * s2))
+            return "Segitiga Siku-Siku";
+        else
+            return "Segitiga Bebas";
+    }
+
+    // Main (contoh uji tanpa input pengguna)
+    public static void main(String[] args) {
+        System.out.println(jenisSegitiga(3, 3, 3));      // Sama Sisi
+        System.out.println(jenisSegitiga(3, 4, 5));      // Siku-Siku
+        System.out.println(jenisSegitiga(5, 5, 7));      // Sama Kaki
+        System.out.println(jenisSegitiga(2, 2, 3.02));   // Sama Kaki (karena beda <1%)
+        System.out.println(jenisSegitiga(1, 2, 3));      // Tidak valid
+        System.out.println(jenisSegitiga(3, 4.03, 5.05)); // Siku-Siku
+    }
+}
