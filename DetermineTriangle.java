@@ -233,3 +233,88 @@ public class JenisSegitiga_Fathir {
         System.out.println(jenisSegitiga(3, 4.03, 5.05)); // Siku-Siku
     }
 }
+
+// Punyanya Muhammad Rafli Ardiansyah - 103012300082
+public class DetermineTriangle_Rafli {
+    private static String invalidMsg = "Tidak ada segitiga dapat dibangun.";
+
+
+    private static double[] sorted(double a, double b, double c) {
+        double[] s = {a, b, c};
+        Arrays.sort(s);
+        return s;
+    }
+
+    public static String classifyInt(int a, int b, int c) {
+        if (a <= 0 || b <= 0 || c <= 0) return invalidMsg;
+        int[] s = {a, b, c};
+        Arrays.sort(s);
+        int s1 = s[0], s2 = s[1], s3 = s[2];
+
+        if (s3 >= s1 + s2) return invalidMsg;
+
+        if (a == b && b == c) return "Segitiga Sama Sisi";
+        else if (a == b || b == c || a == c) return "Segitiga Sama Kaki";
+        else if (s1*s1 + s2*s2 == s3*s3) return "Segitiga Siku-Siku";
+        else return "Segitiga Bebas";
+    }
+
+    private static boolean approxEqual(double x, double y, double relTol) {
+        double scale = Math.max(Math.abs(x), Math.abs(y));
+        if (scale < 1e-12) return Math.abs(x - y) <= 1e-12; 
+        return Math.abs(x - y) <= relTol * scale;
+    }
+
+    public static String classifyDecimal(double a, double b, double c, double relTol) {
+        if (a <= 0 || b <= 0 || c <= 0) return invalidMsg;
+
+        double[] s = sorted(a, b, c);
+        double s1 = s[0], s2 = s[1], s3 = s[2];
+
+        if (s3 >= s1 + s2 || approxEqual(s3, s1 + s2, relTol)) {
+            return invalidMsg;
+        }
+
+        boolean abEqual = approxEqual(a, b, relTol);
+        boolean bcEqual = approxEqual(b, c, relTol);
+        boolean acEqual = approxEqual(a, c, relTol);
+
+        if (abEqual && bcEqual) return "Segitiga Sama Sisi";
+        else if (abEqual || bcEqual || acEqual) return "Segitiga Sama Kaki";
+        else {
+            double lhs = s1*s1 + s2*s2;
+            double rhs = s3*s3;
+            if (approxEqual(lhs, rhs, relTol)) return "Segitiga Siku-Siku";
+            else return "Segitiga Bebas";
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("--- Determine Triangle ---");
+        System.out.println("Pilih mode: 1 = Bilangan bulat, 2 = Pecahan (toleransi 1%)");
+        System.out.print("Mode: ");
+        int mode = sc.nextInt();
+
+        if (mode == 1) {
+            System.out.print("Masukkan a (int): ");
+            int a = sc.nextInt();
+            System.out.print("Masukkan b (int): ");
+            int b = sc.nextInt();
+            System.out.print("Masukkan c (int): ");
+            int c = sc.nextInt();
+            System.out.println("Hasil: " + classifyInt(a, b, c));
+        } else if (mode == 2) {
+            System.out.print("Masukkan a (double): ");
+            double a = sc.nextDouble();
+            System.out.print("Masukkan b (double): ");
+            double b = sc.nextDouble();
+            System.out.print("Masukkan c (double): ");
+            double c = sc.nextDouble();
+            System.out.println("Hasil: " + classifyDecimal(a, b, c, 0.01));
+        } else {
+            System.out.println("Mode tidak dikenal. Bye~");
+        }
+        sc.close();
+    }
+}
