@@ -1,7 +1,7 @@
 import java.text.NumberFormat;
 import java.util.*;
 
-public class Simulasi_Pulsa {
+public class Simulasi_Masa_Aktif {
 
     // ==== MODEL & STORAGE (tetap sederhana, pakai yang sudah ada) ====
 
