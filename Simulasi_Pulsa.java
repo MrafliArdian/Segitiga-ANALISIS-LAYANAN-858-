@@ -1,4 +1,3 @@
-// #comment coder: rafli
 import java.text.NumberFormat;
 import java.util.*;
 
@@ -6,14 +5,12 @@ public class Simulasi_Pulsa {
 
     // ==== MODEL & STORAGE (tetap sederhana, pakai yang sudah ada) ====
 
-    // #comment coder: rafli
     static class Akun {
         String msisdn, pin; int saldo; boolean aktif = true;
         List<String> paket = new ArrayList<>();
         Akun(String n, String p, int s){ msisdn=n; pin=p; saldo=s; }
     }
 
-    // #comment coder: rafli
     static final Map<String, Akun> DB = new HashMap<>();
     static final List<String> LOG = new ArrayList<>();
     static final NumberFormat RUPIAH = NumberFormat.getInstance(new Locale("id", "ID"));
