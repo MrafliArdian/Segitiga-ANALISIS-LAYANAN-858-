@@ -1,12 +1,8 @@
-// Simulasi *858# berlevel
-// #coder: adamleon
-
 import java.text.NumberFormat;
 import java.util.*;
 
 public class Simulasi_Pulsa {
 
-    // Ini Untuk data Dummy nya
     static class Akun {
         String msisdn, pin; int saldo; boolean aktif = true;
         List<String> paket = new ArrayList<>();
@@ -22,8 +18,7 @@ public class Simulasi_Pulsa {
     static final List<String> LOG = new ArrayList<>();
     static final NumberFormat RUPIAH = NumberFormat.getInstance(Locale.of("id", "ID"));
 
-
-    //ini Untuk Memvalidasi nomor dan code *858# nya
+    
     public static void main(String[] a){
         seed(); 
         Scanner sc = new Scanner(System.in);
