@@ -1,8 +1,7 @@
-
 import java.util.*;
 
 // #Coder : Adam Leonard C Munthe
-public class DetermineTriangle {
+public class DetermineTriangle_Adam {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -85,7 +84,7 @@ public class DetermineTriangle {
 }
 
 // Punyanya Nada Nabilah - 103012300202
-public class SegitigaNada {
+public class Segitiga_Nada {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Masukkan nilai a: ");
@@ -136,18 +135,9 @@ public class SegitigaNada {
 }
 
 // Punyanya Novel Shiffa Octaviani - 103012300383
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt
- * to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this
- * template
- */
 package determinetriangle_novelshiffa;
 
-/**
- *
- * @author novel
- */
+
 import java.util.Scanner;
 
 public class DetermineTriangle_NovelShiffa {
